@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -15,7 +16,7 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
@@ -26,7 +27,7 @@ class User extends Authenticatable
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
@@ -44,5 +45,29 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get all courses created by this user
+     */
+    public function courses(): HasMany
+    {
+        return $this->hasMany(Course::class, 'created_by');
+    }
+
+    /**
+     * Get published courses created by this user
+     */
+    public function publishedCourses(): HasMany
+    {
+        return $this->courses()->where('status', 'published');
+    }
+
+    /**
+     * Get draft courses created by this user
+     */
+    public function draftCourses(): HasMany
+    {
+        return $this->courses()->where('status', 'draft');
     }
 }
