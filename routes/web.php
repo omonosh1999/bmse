@@ -7,9 +7,7 @@ use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 // Public Pages
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [PublicController::class, 'home'])->name('home');
 
 Route::get('/primary', [PublicController::class, 'primary'])->name('primary');
 Route::get('/secondary', [PublicController::class, 'secondary'])->name('secondary');

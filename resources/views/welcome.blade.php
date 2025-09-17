@@ -126,82 +126,43 @@
                     </p>
                 </div>
 
-                <!-- Course Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                    <!-- Sample Course 1 -->
-                    <div
-                        class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200">
-                        <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                            <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4">
+                @if ($latestCourses->count() > 0)
+                    <!-- Course Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                        @foreach ($latestCourses as $course)
+                            <x-course-card :title="$course->title" :description="Str::limit($course->description, 120)" :image="$course->cover_photo ? asset('storage/' . $course->cover_photo) : null" :level="$course->class_level"
+                                duration="" :lessons="$course->lessons->count() . ' lessons'" price="Free" :route="route('courses.preview', $course)" buttonText="View Course"
+                                :badge="$course->lessons->count() > 15
+                                    ? 'Complete Course'
+                                    : ($course->lessons->count() > 8
+                                        ? 'Standard'
+                                        : 'Starter')" :featured="$course->category === 'secondary'" />
+                        @endforeach
+                    </div>
+                @else
+                    <!-- No Courses Available -->
+                    <div class="text-center py-12">
+                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253">
                                 </path>
                             </svg>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Algebra Fundamentals</h3>
-                            <p class="text-gray-600 mb-4">Master the basics of algebraic expressions, equations, and
-                                problem-solving techniques.</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-500">12 lessons</span>
-                                <a href="{{ route('courses.index') }}" class="text-[#006738] font-medium hover:underline">
-                                    View Course →
-                                </a>
-                            </div>
-                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">No Courses Available Yet</h3>
+                        <p class="text-gray-600 mb-6">New courses are coming soon. Check back later for the latest
+                            mathematics courses.</p>
                     </div>
-
-                    <!-- Sample Course 2 -->
-                    <div
-                        class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200">
-                        <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
-                            <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
-                                </path>
-                            </svg>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Mental Math Mastery</h3>
-                            <p class="text-gray-600 mb-4">Develop lightning-fast calculation skills with proven mental math
-                                techniques.</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-500">15 lessons</span>
-                                <a href="{{ route('courses.index') }}" class="text-[#006738] font-medium hover:underline">
-                                    View Course →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sample Course 3 -->
-                    <div
-                        class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200">
-                        <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
-                            <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M13 7a4 4 0 11-8 0 4 4 0 018 0zM9 14a6 6 0 00-6 6v1h12v-1a6 6 0 00-6-6zM21 12h-6m3-3v6">
-                                </path>
-                            </svg>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Geometry Essentials</h3>
-                            <p class="text-gray-600 mb-4">Explore shapes, angles, and spatial relationships with
-                                interactive lessons.</p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-500">18 lessons</span>
-                                <a href="{{ route('courses.index') }}" class="text-[#006738] font-medium hover:underline">
-                                    View Course →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endif
 
                 <div class="text-center">
-                    <a href="{{ route('courses.index') }}"
-                        class="inline-block px-8 py-3 bg-[#006738] text-white font-semibold rounded-full hover:bg-green-700 transition-colors duration-200">
-                        View All Courses
+                    <a href="{{ route('primary') }}"
+                        class="inline-block px-6 py-3 bg-[#006738] text-white font-semibold rounded-full hover:bg-green-700 transition-colors duration-200 mr-4">
+                        Primary Courses
+                    </a>
+                    <a href="{{ route('secondary') }}"
+                        class="inline-block px-6 py-3 bg-[#006738] text-white font-semibold rounded-full hover:bg-green-700 transition-colors duration-200">
+                        Secondary Courses
                     </a>
                 </div>
             </div>
@@ -321,7 +282,7 @@
                                     class="w-10 h-10 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mr-4">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
                                         </path>
                                     </svg>
                                 </div>
@@ -346,7 +307,7 @@
                     Join thousands of students who have conquered their fear of mathematics and achieved academic success
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="{{ route('courses.index') }}"
+                    <a href="{{ route('primary') }}"
                         class="px-8 py-3 bg-[#FBC905] text-[#006738] font-semibold rounded-full hover:bg-yellow-400 transition-colors duration-200">
                         Start Learning Today
                     </a>

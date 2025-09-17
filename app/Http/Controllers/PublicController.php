@@ -105,10 +105,19 @@ class PublicController extends Controller
         return view('secondary', compact('courses', 'availableForms'));
     }
 
+    
+
     public function home()
-    {
-        return view('home');
-    }
+{
+    // Get latest 6 courses for the "Latest Courses" section
+    $latestCourses = Course::where('status', 'published')
+        ->with('lessons')
+        ->orderBy('created_at', 'desc')
+        ->limit(6)
+        ->get();
+
+    return view('welcome', compact('latestCourses'));
+}
 
     public function mental()
     {
