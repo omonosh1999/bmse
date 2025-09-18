@@ -3,7 +3,7 @@
 @section('content')
     <div class="min-h-screen">
         <!-- Header Section -->
-        <section class="bg-gradient-to-br from-[#006738] to-green-800 text-white py-20">
+        <section class="bg-[#006738] text-white py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                     Primary <span class="text-[#FBC905]">Mathematics</span>
@@ -98,19 +98,13 @@
                     <!-- Courses Grid -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         @foreach ($courses as $course)
-                            <x-course-card 
-                                :title="$course->title"
-                                :description="Str::limit($course->description, 120)"
-                                :image="$course->cover_photo ? asset('storage/' . $course->cover_photo) : null"
-                                :level="$course->class_level"
-                                duration=""
-                                :lessons="$course->lessons->count() . ' lessons'"
-                                price="Free"
-                                :route="route('courses.preview', $course)"
-                                buttonText="View Course"
-                                :badge="$course->lessons->count() > 15 ? 'Complete Course' : ($course->lessons->count() > 8 ? 'Standard' : 'Starter')"
-                                :featured="$course->lessons->count() > 20"
-                            />
+                            <x-course-card :title="$course->title" :description="Str::limit($course->description, 120)" :image="$course->cover_photo ? asset('storage/' . $course->cover_photo) : null" :level="$course->class_level"
+                                duration="" :lessons="$course->lessons->count() . ' lessons'" price="Free" :route="route('courses.preview', $course)" buttonText="View Course"
+                                :badge="$course->lessons->count() > 15
+                                    ? 'Complete Course'
+                                    : ($course->lessons->count() > 8
+                                        ? 'Standard'
+                                        : 'Starter')" :featured="$course->lessons->count() > 20" />
                         @endforeach
                     </div>
 
@@ -160,32 +154,37 @@
                     <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose Our Primary Program?</h2>
                     <p class="text-lg text-gray-600">Building confidence through engaging, age-appropriate learning</p>
                 </div>
-                
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="text-center">
                         <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253">
+                                </path>
                             </svg>
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2">Ages 5-11</h3>
                         <p class="text-gray-600">Carefully designed curriculum for primary school students</p>
                     </div>
-                    
+
                     <div class="text-center">
                         <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                                </path>
                             </svg>
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2">Interactive Learning</h3>
                         <p class="text-gray-600">Engaging activities, games, and visual learning tools</p>
                     </div>
-                    
+
                     <div class="text-center">
                         <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
                         </div>
                         <h3 class="text-lg font-semibold text-gray-900 mb-2">Quick Progress</h3>
@@ -216,8 +215,7 @@
                     <div class="bg-white p-4 sm:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
                         <div class="text-[#006738] mb-3">
                             <svg class="w-6 sm:w-8 h-6 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 4v16m8-8H4">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4">
                                 </path>
                             </svg>
                         </div>
@@ -261,56 +259,69 @@
                         <div class="space-y-6">
                             <div class="flex items-start">
                                 <div class="w-8 h-8 bg-[#006738] rounded-full flex items-center justify-center mr-4 mt-1">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Curriculum Aligned</h3>
-                                    <p class="text-gray-600">Fully aligned with British National Numeracy Curriculum standards</p>
+                                    <p class="text-gray-600">Fully aligned with British National Numeracy Curriculum
+                                        standards</p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-start">
                                 <div class="w-8 h-8 bg-[#006738] rounded-full flex items-center justify-center mr-4 mt-1">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Expert Teachers</h3>
-                                    <p class="text-gray-600">Qualified primary mathematics specialists with years of experience</p>
+                                    <p class="text-gray-600">Qualified primary mathematics specialists with years of
+                                        experience</p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-start">
                                 <div class="w-8 h-8 bg-[#006738] rounded-full flex items-center justify-center mr-4 mt-1">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Progress Tracking</h3>
-                                    <p class="text-gray-600">Detailed progress reports for parents and continuous assessment</p>
+                                    <p class="text-gray-600">Detailed progress reports for parents and continuous
+                                        assessment</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-2xl">
                         <div class="text-center">
                             <h3 class="text-2xl font-bold text-gray-900 mb-4">Start Your Child's Journey</h3>
-                            <p class="text-gray-600 mb-6">Join thousands of families who trust BriliantMath for their children's mathematical education</p>
+                            <p class="text-gray-600 mb-6">Join thousands of families who trust BriliantMath for their
+                                children's mathematical education</p>
                             <div class="space-y-4">
                                 @guest
-                                    <a href="{{ route('register') }}" class="w-full inline-flex items-center justify-center px-6 py-3 bg-[#006738] text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200">
+                                    <a href="{{ route('register') }}"
+                                        class="w-full inline-flex items-center justify-center px-6 py-3 bg-[#006738] text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200">
                                         Get Started Free
                                     </a>
-                                    <a href="{{ route('contact') }}" class="w-full inline-flex items-center justify-center px-6 py-3 border-2 border-[#006738] text-[#006738] font-semibold rounded-lg hover:bg-[#006738] hover:text-white transition-colors duration-200">
+                                    <a href="{{ route('contact') }}"
+                                        class="w-full inline-flex items-center justify-center px-6 py-3 border-2 border-[#006738] text-[#006738] font-semibold rounded-lg hover:bg-[#006738] hover:text-white transition-colors duration-200">
                                         Book a Consultation
                                     </a>
                                 @else
-                                    <a href="{{ route('courses.index') }}" class="w-full inline-flex items-center justify-center px-6 py-3 bg-[#006738] text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200">
+                                    <a href="{{ route('courses.index') }}"
+                                        class="w-full inline-flex items-center justify-center px-6 py-3 bg-[#006738] text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200">
                                         Browse All Courses
                                     </a>
                                 @endguest
@@ -332,14 +343,17 @@
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     @guest
-                        <a href="{{ route('register') }}" class="px-8 py-3 bg-[#FBC905] text-[#006738] font-semibold rounded-full hover:bg-yellow-400 transition-colors duration-200">
+                        <a href="{{ route('register') }}"
+                            class="px-8 py-3 bg-[#FBC905] text-[#006738] font-semibold rounded-full hover:bg-yellow-400 transition-colors duration-200">
                             Start Free Course
                         </a>
-                        <a href="{{ route('contact') }}" class="px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-[#006738] transition-colors duration-200">
+                        <a href="{{ route('contact') }}"
+                            class="px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-[#006738] transition-colors duration-200">
                             Contact Us
                         </a>
                     @else
-                        <a href="{{ route('courses.index') }}" class="px-8 py-3 bg-[#FBC905] text-[#006738] font-semibold rounded-full hover:bg-yellow-400 transition-colors duration-200">
+                        <a href="{{ route('courses.index') }}"
+                            class="px-8 py-3 bg-[#FBC905] text-[#006738] font-semibold rounded-full hover:bg-yellow-400 transition-colors duration-200">
                             Browse Courses
                         </a>
                     @endguest

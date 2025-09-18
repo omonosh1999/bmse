@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('courses.index')" :active="request()->routeIs('courses.*')">
                         {{ __('Courses') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('quizzes.index')" :active="request()->routeIs('quizzes.*')">
+                        {{ __('Quizzes') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -45,7 +48,26 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+                        <!-- Quick Actions -->
+                        <div class="border-t border-gray-200"></div>
+                        <x-dropdown-link :href="route('courses.create')">
+                            {{ __('Create Course') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('quizzes.create')">
+                            {{ __('Create Quiz') }}
+                        </x-dropdown-link>
+
+                        <!-- View Public Pages -->
+                        <div class="border-t border-gray-200"></div>
+                        <x-dropdown-link :href="route('home')" target="_blank">
+                            {{ __('View Public Site') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('mental')" target="_blank">
+                            {{ __('View Mental Math') }}
+                        </x-dropdown-link>
+
                         <!-- Authentication -->
+                        <div class="border-t border-gray-200"></div>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
@@ -84,6 +106,9 @@
             <x-responsive-nav-link :href="route('courses.index')" :active="request()->routeIs('courses.*')">
                 {{ __('Courses') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('quizzes.index')" :active="request()->routeIs('quizzes.*')">
+                {{ __('Quizzes') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -96,6 +121,22 @@
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
+                </x-responsive-nav-link>
+
+                <!-- Quick Actions (Mobile) -->
+                <x-responsive-nav-link :href="route('courses.create')">
+                    {{ __('Create Course') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('quizzes.create')">
+                    {{ __('Create Quiz') }}
+                </x-responsive-nav-link>
+
+                <!-- View Public Pages (Mobile) -->
+                <x-responsive-nav-link :href="route('home')" target="_blank">
+                    {{ __('View Public Site') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('mental')" target="_blank">
+                    {{ __('View Mental Math') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->

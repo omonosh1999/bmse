@@ -18,7 +18,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::with(['creator', 'lessons'])
+        $courses = Course::with(['user', 'lessons'])
                         ->where('created_by', Auth::id())
                         ->latest()
                         ->paginate(10);
@@ -184,7 +184,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        $course->load(['creator', 'lessons']);
+        $course->load(['user', 'lessons']);
         return view('courses.show', compact('course'));
     }
 

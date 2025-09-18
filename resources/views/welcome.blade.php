@@ -126,10 +126,10 @@
                     </p>
                 </div>
 
-                @if ($latestCourses->count() > 0)
+                @if ($courses->count() > 0)
                     <!-- Course Cards -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                        @foreach ($latestCourses as $course)
+                        @foreach ($courses as $course)
                             <x-course-card :title="$course->title" :description="Str::limit($course->description, 120)" :image="$course->cover_photo ? asset('storage/' . $course->cover_photo) : null" :level="$course->class_level"
                                 duration="" :lessons="$course->lessons->count() . ' lessons'" price="Free" :route="route('courses.preview', $course)" buttonText="View Course"
                                 :badge="$course->lessons->count() > 15

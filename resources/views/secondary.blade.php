@@ -3,7 +3,7 @@
 @section('content')
     <div class="min-h-screen">
         <!-- Header Section -->
-        <section class="bg-gradient-to-br from-[#006738] to-green-800 text-white py-20">
+        <section class="bg-[#006738] text-white py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                     Secondary <span class="text-[#FBC905]">Mathematics</span>
