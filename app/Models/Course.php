@@ -184,21 +184,21 @@ class Course extends Model
         
         if ($category === 'primary') {
             $options = [
-                'primary_class_1' => 'Primary Class 1',
-                'primary_class_2' => 'Primary Class 2', 
-                'primary_class_3' => 'Primary Class 3',
-                'primary_class_4' => 'Primary Class 4',
-                'primary_class_5' => 'Primary Class 5',
-                'primary_class_6' => 'Primary Class 6',
+                'primary_class_1' => 'Class 1',
+                'primary_class_2' => 'Class 2', 
+                'primary_class_3' => 'Class 3',
+                'primary_class_4' => 'Class 4',
+                'primary_class_5' => 'Class 5',
+                'primary_class_6' => 'Class 6',
             ];
         } elseif ($category === 'secondary') {
             $options = [
-                'secondary_class_1' => 'Secondary Class 1',
-                'secondary_class_2' => 'Secondary Class 2',
-                'secondary_class_3' => 'Secondary Class 3',
-                'secondary_class_4' => 'Secondary Class 4',
-                'secondary_class_5' => 'Secondary Class 5',
-                'secondary_class_6' => 'Secondary Class 6',
+                'secondary_class_1' => 'Form 1',
+                'secondary_class_2' => 'Form 2',
+                'secondary_class_3' => 'Form 3',
+                'secondary_class_4' => 'Form 4',
+                'secondary_class_5' => 'Form 5',
+                'secondary_class_6' => 'Form 6',
             ];
         }
         
