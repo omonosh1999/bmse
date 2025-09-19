@@ -184,21 +184,21 @@ class Course extends Model
         
         if ($category === 'primary') {
             $options = [
-                'class_1' => 'Class 1',
-                'class_2' => 'Class 2', 
-                'class_3' => 'Class 3',
-                'class_4' => 'Class 4',
-                'class_5' => 'Class 5',
-                'class_6' => 'Class 6',
+                'Class 1' => 'Class 1',
+                'Class 2' => 'Class 2', 
+                'Class 3' => 'Class 3',
+                'Class 4' => 'Class 4',
+                'Class 5' => 'Class 5',
+                'Class 6' => 'Class 6',
             ];
         } elseif ($category === 'secondary') {
             $options = [
-                'form_1' => 'Form 1',
-                'form_2' => 'Form 2',
-                'form_3' => 'Form 3',
-                'form_4' => 'Form 4',
-                'form_5' => 'Form 5',
-                'form_6' => 'Form 6',
+                'Form 1' => 'Form 1',
+                'Form 2' => 'Form 2',
+                'Form 3' => 'Form 3',
+                'Form 4' => 'Form 4',
+                'Form 5' => 'Form 5',
+                'Form 6' => 'Form 6',
             ];
         }
         
