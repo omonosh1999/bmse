@@ -159,6 +159,12 @@
             class="uppercase hover:bg-gray-50 hover:text-[#006738] font-medium text-gray-700 py-3 px-4 rounded-md transition-all duration-200 {{ request()->routeIs('contact') ? 'bg-gray-50 text-[#006738]' : '' }}">
             Contact
         </a>
+        <a href="https://www.youtube.com/@brilliantmaths-ngoziorevao4166/videos" target="_blank"
+            rel="noopener noreferrer"
+            class="uppercase hover:bg-gray-50 hover:text-[#006738] font-medium text-gray-700 py-3 px-4 rounded-md transition-all duration-200 {{ request()->routeIs('Resource') ? 'text-[#FBC905] bg-[#FBC90533]' : '' }}">
+            Resources
+        </a>
+
 
         @auth
             <hr class="my-2 border-gray-200">
