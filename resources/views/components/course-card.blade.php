@@ -62,8 +62,7 @@
     <!-- Content Section -->
     <div class="p-6 flex flex-col h-64">
         <!-- Title -->
-        <h3
-            class="text-3xl font-bold text-gray-900 mb-3 line-clamp-3 group-hover:text-[#006738] transition-colors duration-200">
+        <h3 class="text-3xl font-bold text-gray-900 mb-3 group-hover:text-[#006738] transition-colors duration-200">
             {{ $title }}
         </h3>
 
