@@ -15,7 +15,7 @@
 <div
     class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group {{ $featured ? 'ring-2 ring-[#FBC905]' : '' }}">
     <!-- Image Section -->
-    <div class="relative overflow-hidden">
+    <div class="relative overflow-hidden h-48">
         @if ($image)
             <img src="{{ $image }}" alt="{{ $title }}"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
@@ -60,14 +60,15 @@
     </div>
 
     <!-- Content Section -->
-    <div class="p-6 flex flex-col">
+    <div class="p-6 flex flex-col h-64">
         <!-- Title -->
-        <h3 class="text-3xl font-bold text-gray-900 mb-3 group-hover:text-[#006738] transition-colors duration-200">
+        <h3
+            class="text-3xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-[#006738] transition-colors duration-200">
             {{ $title }}
         </h3>
 
         <!-- Description -->
-        <p class="text-gray-600 text-lg mb-4 flex-grow leading-relaxed">
+        <p class="text-gray-600 text-lg mb-4 flex-grow line-clamp-3 leading-relaxed">
             {{ $description }}
         </p>
 
@@ -120,7 +121,7 @@
     </div>
 </div>
 
-<style>
+{{-- <style>
     .line-clamp-2 {
         overflow: hidden;
         display: -webkit-box;
@@ -134,4 +135,4 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
     }
-</style>
+</style> --}}
