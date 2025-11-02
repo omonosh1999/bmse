@@ -67,7 +67,7 @@
         </h3>
 
         <!-- Description -->
-        <p class="text-gray-600 text-lg mb-4 flex-grow line-clamp-3 leading-relaxed">
+        <p class="text-gray-600 text-lg mb-4 flex-grow leading-relaxed">
             {{ $description }}
         </p>
 
