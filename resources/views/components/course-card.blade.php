@@ -13,7 +13,7 @@
 ])
 
 <div
-    class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group {{ $featured ? 'ring-2 ring-[#FBC905]' : '' }}">
+    class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group {{ $featured ? 'ring-2 ring-[#FBC905]' : '' }}">
     <!-- Image Section -->
     <div class="relative h-48">
         @if ($image)
