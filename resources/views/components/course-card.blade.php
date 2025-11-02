@@ -42,7 +42,7 @@
         @if ($level)
             <div class="absolute top-3 left-3">
                 <span
-                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#FBC905] text-[#006738]">
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-[#FBC905] text-[#006738]">
                     {{ $level }}
                 </span>
             </div>
@@ -63,12 +63,12 @@
     <div class="p-6 flex flex-col h-64">
         <!-- Title -->
         <h3
-            class="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-[#006738] transition-colors duration-200">
+            class="text-3xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-[#006738] transition-colors duration-200">
             {{ $title }}
         </h3>
 
         <!-- Description -->
-        <p class="text-gray-600 text-sm mb-4 flex-grow line-clamp-3 leading-relaxed">
+        <p class="text-gray-600 text-lg mb-4 flex-grow line-clamp-3 leading-relaxed">
             {{ $description }}
         </p>
 

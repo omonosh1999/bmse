@@ -39,6 +39,60 @@
             </div>
         </section>
 
+        <!-- Latest Courses Section -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        Latest Courses
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Discover our newest mathematics courses designed to help you excel
+                    </p>
+                </div>
+
+                @if ($courses->count() > 0)
+                    <!-- Course Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                        @foreach ($courses as $course)
+                            <x-course-card :title="$course->title" :description="Str::limit($course->description, 120)" :image="$course->cover_photo ? asset('storage/' . $course->cover_photo) : null" :level="$course->class_level"
+                                duration="" :lessons="$course->lessons->count() . ' lessons'" price="Free" :route="route('courses.preview', $course)" buttonText="View Course"
+                                :badge="$course->lessons->count() > 15
+                                    ? 'Complete Course'
+                                    : ($course->lessons->count() > 8
+                                        ? 'Standard'
+                                        : 'Starter')" :featured="$course->category === 'secondary'" />
+                        @endforeach
+                    </div>
+                @else
+                    <!-- No Courses Available -->
+                    <div class="text-center py-12">
+                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">No Courses Available Yet</h3>
+                        <p class="text-gray-600 mb-6">New courses are coming soon. Check back later for the latest
+                            mathematics courses.</p>
+                    </div>
+                @endif
+
+                <div class="text-center">
+                    <a href="{{ route('primary') }}"
+                        class="inline-block px-6 py-3 bg-[#006738] text-white font-semibold rounded-full hover:bg-green-700 transition-colors duration-200 mr-4">
+                        Primary Courses
+                    </a>
+                    <a href="{{ route('secondary') }}"
+                        class="inline-block px-6 py-3 bg-[#006738] text-white font-semibold rounded-full hover:bg-green-700 transition-colors duration-200">
+                        Secondary Courses
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- Quick Access Section -->
         <section class="py-16 bg-gray-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -110,60 +164,6 @@
                             Train Your Mind
                         </a>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Latest Courses Section -->
-        <section class="py-16 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                        Latest Courses
-                    </h2>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Discover our newest mathematics courses designed to help you excel
-                    </p>
-                </div>
-
-                @if ($courses->count() > 0)
-                    <!-- Course Cards -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                        @foreach ($courses as $course)
-                            <x-course-card :title="$course->title" :description="Str::limit($course->description, 120)" :image="$course->cover_photo ? asset('storage/' . $course->cover_photo) : null" :level="$course->class_level"
-                                duration="" :lessons="$course->lessons->count() . ' lessons'" price="Free" :route="route('courses.preview', $course)" buttonText="View Course"
-                                :badge="$course->lessons->count() > 15
-                                    ? 'Complete Course'
-                                    : ($course->lessons->count() > 8
-                                        ? 'Standard'
-                                        : 'Starter')" :featured="$course->category === 'secondary'" />
-                        @endforeach
-                    </div>
-                @else
-                    <!-- No Courses Available -->
-                    <div class="text-center py-12">
-                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253">
-                                </path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-4">No Courses Available Yet</h3>
-                        <p class="text-gray-600 mb-6">New courses are coming soon. Check back later for the latest
-                            mathematics courses.</p>
-                    </div>
-                @endif
-
-                <div class="text-center">
-                    <a href="{{ route('primary') }}"
-                        class="inline-block px-6 py-3 bg-[#006738] text-white font-semibold rounded-full hover:bg-green-700 transition-colors duration-200 mr-4">
-                        Primary Courses
-                    </a>
-                    <a href="{{ route('secondary') }}"
-                        class="inline-block px-6 py-3 bg-[#006738] text-white font-semibold rounded-full hover:bg-green-700 transition-colors duration-200">
-                        Secondary Courses
-                    </a>
                 </div>
             </div>
         </section>

@@ -3,8 +3,7 @@
 @section('content')
     <div class="min-h-screen bg-gray-50">
         <!-- Results Header -->
-        <section
-            class="bg-gradient-to-br from-{{ $attempt->passed ? 'green' : 'red' }} to-{{ $attempt->passed ? 'green' : 'red' }} text-white py-12">
+        <section class="{{ $attempt->passed ? 'bg-green-500' : 'bg-red-500' }} text-white py-12">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
                     <!-- Result Icon -->
@@ -247,7 +246,7 @@
                     @if ($attempt->quiz->course)
                         <a href="{{ route('courses.preview', $attempt->quiz->course) }}"
                             class="px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors duration-200">
-                            Back to Lesson 
+                            Back to Lesson
                             {{-- {{ $attempt->quiz->course->title }} --}}
                         </a>
                     @endif

@@ -18,10 +18,13 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::with(['user', 'lessons'])
-                        ->where('created_by', Auth::id())
-                        ->latest()
-                        ->paginate(10);
+        // $courses = Course::with(['user', 'lessons'])
+        //                 ->where('created_by', Auth::id())
+        //                 ->latest()
+        //                 ->paginate(5);
+            $courses = Course::with(['user', 'lessons'])
+            ->latest()
+            ->paginate(10);
 
         return view('courses.index', compact('courses'));
     }
