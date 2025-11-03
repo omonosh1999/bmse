@@ -39,7 +39,7 @@
         <a href="https://www.youtube.com/@brilliantmaths-ngoziorevao4166/videos" target="_blank"
             rel="noopener noreferrer"
             class="uppercase hover:bg-[#FBC90533] py-7 px-4 hover:text-[#FBC905] font-medium text-[13px] transition-colors duration-200 {{ request()->routeIs('Resource') ? 'text-[#FBC905] bg-[#FBC90533]' : '' }}">
-            Resources
+            Videos
         </a>
     </nav>
 
@@ -162,7 +162,7 @@
         <a href="https://www.youtube.com/@brilliantmaths-ngoziorevao4166/videos" target="_blank"
             rel="noopener noreferrer"
             class="uppercase hover:bg-gray-50 hover:text-[#006738] font-medium text-gray-700 py-3 px-4 rounded-md transition-all duration-200 {{ request()->routeIs('Resource') ? 'text-[#FBC905] bg-[#FBC90533]' : '' }}">
-            Resources
+            Videos
         </a>
 
 
